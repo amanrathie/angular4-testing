@@ -5,7 +5,7 @@ interface AuthConfig {
 }
 
 export const AUTH_CONFIG: AuthConfig = {
-  clientID: '4SdR6GSf5X4DRbwFfuq0sm2yg1c8CxQE',
+  clientID: 'gALKwsjpK_nbC3fuczFkcqz1IGDqo9Oi',
   domain: 'amanrathie.auth0.com',
-  callbackURL: 'https://poker-bankroll.herokuapp.com/#/home/dashboard'
+  callbackURL: 'https://poker-bankroll.herokuapp.com/callback'
 };

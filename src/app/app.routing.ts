@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+
+import {CallbackComponent} from './callback/callback.component';
 // import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
@@ -13,6 +15,7 @@ const routes: Routes =[
       { path: 'home',      component: HomeComponent },
       { path: 'login',     component: LoginComponent },
       { path: 'signup',    component: SignupComponent },
+      { path: 'callback',  component: CallbackComponent},
       { path: '',          redirectTo: 'home', pathMatch: 'full' },
       // { path: '**',        component: NotFoundComponent },
 ];
@@ -21,14 +24,13 @@ const routes: Routes =[
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes)
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+
   ],
   exports: [
     RouterModule
   ],
 })
 export class AppRoutingModule { }
-

@@ -11,7 +11,7 @@ export class AuthService {
     domain: AUTH_CONFIG.domain,
     responseType: 'token id_token',
     audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    redirectUri: '${AUTH_CONFIG.callbackURL}',
+    redirectUri: AUTH_CONFIG.callbackURL,
     scope: 'openid'
   });
 
@@ -26,9 +26,9 @@ export class AuthService {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
         this.setSession(authResult);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home/dashboard']);
       } else if (err) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home/dashboard']);
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -49,7 +49,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // Go back to the home route
-    this.router.navigate(['/']);
+    this.router.navigate(['/home/dashboard']);
   }
 
   public isAuthenticated(): boolean {

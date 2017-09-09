@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import {AuthService} from './auth/auth.service'
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
-  constructor(public location: Location, public router: Router) {}
+
+  constructor(public location: Location, public router: Router, public auth: AuthService) {
+      auth.handleAuthentication();
+  }
 
   ngOnInit() {
+    console.log(this.location.path());
     if (this.location.path() =='' || this.location.path() == '/home') {
       this.router.navigate(['/home/dashboard']);
     }
