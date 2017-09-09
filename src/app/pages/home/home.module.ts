@@ -14,26 +14,28 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { GameTypesComponent } from './game-types/game-types.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    
+
     ComponentsModule,
     HomeRoutingModule,
     RouterModule,
   ],
   declarations: [
-    HomeComponent, 
-    DashboardComponent, 
-    UserProfileComponent, 
-    TableListComponent, 
-    TypographyComponent, 
-    IconsComponent, 
-    MapsComponent, 
-    NotificationsComponent, 
+    HomeComponent,
+    DashboardComponent,
+    UserProfileComponent,
+    TableListComponent,
+    TypographyComponent,
+    IconsComponent,
+    MapsComponent,
+    NotificationsComponent,
     UpgradeComponent,
+    GameTypesComponent,
   ]
 })
 export class HomeModule { }

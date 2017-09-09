@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar-routes.config';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +11,11 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 export class NavbarComponent implements OnInit {
     private listTitles: any[];
     location: Location;
+    auth : AuthService;
 
-    constructor(location: Location) {
+    constructor(location: Location, auth : AuthService) {
       this.location = location;
+      this.auth = auth;
     }
 
     ngOnInit(){
