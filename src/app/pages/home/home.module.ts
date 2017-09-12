@@ -14,7 +14,8 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
-import { GameTypesComponent } from './game-types/game-types.component';
+import { GameTypeComponent } from './game-type/game-type.component';
+import { GameTypeService } from './game-type/game-type.service';
 
 @NgModule({
   imports: [
@@ -35,7 +36,10 @@ import { GameTypesComponent } from './game-types/game-types.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    GameTypesComponent,
+    GameTypeComponent,
+  ],
+  providers: [
+    GameTypeService
   ]
 })
 export class HomeModule { }

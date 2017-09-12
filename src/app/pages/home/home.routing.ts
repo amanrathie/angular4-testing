@@ -12,7 +12,7 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
-import { GameTypesComponent } from './game-types/game-types.component'
+import { GameTypeComponent } from './game-type/game-type.component'
 
 
 const routes: Routes =[
@@ -26,7 +26,7 @@ const routes: Routes =[
       { path: 'maps',           component: MapsComponent },
       { path: 'notifications',  component: NotificationsComponent },
       { path: 'upgrade',        component: UpgradeComponent },
-      { path: 'game-types',     component: GameTypesComponent },
+      { path: 'game-type',     component: GameTypeComponent },
     ]
   }
 ];
