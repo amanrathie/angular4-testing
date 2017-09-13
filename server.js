@@ -1,19 +1,27 @@
 // server.js
 const express = require('express');
+const bodyParser = require('body-parser');
+var path = require("path");
 const app = express();
+
+// Parsers
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+
 // Run the app by serving the static files
 // in the dist directory
 app.use(express.static(__dirname + '/dist'));
+
+const api = require('./server/routes/api');
+
+// API location
+app.use('/api', api);
+
+// Send all other requests to the Angular app
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
 // Start the app by listening on the default
 // Heroku port
 app.listen(process.env.PORT || 4200);
-
-app.get("/api/gametype", function(req, res) {
-    var gameTypes = [
-        { id: 1, name: 'Tournament' },
-        { id: 2, name: 'Cash Game' },
-        { id: 3, name: 'Other' }
-    ];
-
-    res.send(gameTypes);
-});
