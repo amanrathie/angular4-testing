@@ -1,6 +1,6 @@
-# Angular4Testing
+# Poker Bankroll
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
+To run the project: `ng build --watch` in one console and `npm start` in another console
 
 ## Development server
 
