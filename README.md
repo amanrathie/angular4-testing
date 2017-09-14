@@ -4,9 +4,9 @@ A project to manage your poker bankroll
 
 ## Development server
 
-Open two terminals. 
-In the first one, run `ng serve --proxy-config proxy.config.json`. This will run the app in http://localhost:4200
-In the second one, run `nodemon server.js --watch server`. This will start the express server in http://localhost:3000 and the API will be available in the /api path.
+* Install nodemon: `npm install -g nodemon` and open two terminals in the project folder 
+* In the first one, run `ng serve --proxy-config proxy.config.json`. This will run the app in http://localhost:4200
+* In the second one, run `nodemon server.js --watch server`. This will start the express server in http://localhost:3000 and the API will be available in the /api path.
 
 ## Code scaffolding
 
