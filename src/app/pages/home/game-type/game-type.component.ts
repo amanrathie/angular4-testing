@@ -15,8 +15,14 @@ export class GameTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.gameTypeService.getGameTypes()
-    .then( (gameTypes : GameType[]) => this.gameTypes = gameTypes );
+    /*this.gameTypeService.getGameTypes()
+        .then(
+          (gameTypes : GameType[]) => this.gameTypes = gameTypes
+        );*/
+
+    this.gameTypeService.getGameTypes2().subscribe(
+      res => this.gameTypes = res
+    );
   }
 
 }
