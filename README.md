@@ -6,6 +6,7 @@ A project to manage your poker bankroll
 
 This is a configuration found in this post: https://stackoverflow.com/questions/42895585/hooking-up-express-js-with-angular-cli-in-dev-environment to make Angular CLI work with Express with both having live reloading.
 
+* Configure MONGODB_URI system variable with MongoDB url
 * Install nodemon: `npm install -g nodemon` and open two terminals in the project folder 
 * In the first one, run `ng serve --proxy-config proxy.config.json`. This will run the app in http://localhost:4200
 * In the second one, run `nodemon server.js --watch server`. This will start the express server in http://localhost:3000 and the API will be available in the /api path.
