@@ -17,13 +17,18 @@ export class GameTypeService {
                  .toPromise()
                  .then(response => response.json().data as GameType[])
                  .catch(this.handleError);
+
+     // another way to get using angular observable
+     /*return this.http.get(this.gameTypeUrl)
+                 .map(response => response.json().data);*/
+
     }
 
-    // another way to get using angular observable
-    getGameTypes2() {
-      return this.http.get(this.gameTypeUrl)
-                  .map(response => response.json().data);
-
+    removeGameType(gameType : GameType) {
+      return this.http.delete(this.gameTypeUrl + '/' + gameType._id)
+                .toPromise()
+                .then(res => res.json().data as String)
+                .catch(this.handleError);
     }
 
 

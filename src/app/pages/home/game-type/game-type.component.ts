@@ -14,15 +14,16 @@ export class GameTypeComponent implements OnInit {
   constructor(private gameTypeService : GameTypeService) {
   }
 
+  public removeGameType(gameType : GameType) {
+    this.gameTypeService.removeGameType(gameType)
+        .then(res => this.gameTypes.splice(this.gameTypes.indexOf(gameType), 1));
+  }
+
   ngOnInit() {
-    /*this.gameTypeService.getGameTypes()
+    this.gameTypeService.getGameTypes()
         .then(
           (gameTypes : GameType[]) => this.gameTypes = gameTypes
-        );*/
-
-    this.gameTypeService.getGameTypes2().subscribe(
-      res => this.gameTypes = res
-    );
+        );
   }
 
 }

@@ -34,4 +34,18 @@ router.get("/gametype", (req, res) => {
     });
 });
 
+router.delete("/gametype/:id", (req, res) => {
+  connection((db) => {
+    db.collection('gametype')
+      .deleteOne({_id:new ObjectID(req.params.id)})
+      .then((result) => {
+        response.data = req.params.id;
+        res.status(200).json(response);
+      })
+      .catch((err) => {
+          sendError(err, res);
+      });
+  });
+});
+
 module.exports = router;
