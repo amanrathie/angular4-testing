@@ -40,7 +40,7 @@
     "livereload": "^0.6.2",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14",
-    "mongodb": "^5.3.0"
+    "mongodb": "^2.2.31"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^4.2.4",
