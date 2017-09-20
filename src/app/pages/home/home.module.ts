@@ -16,6 +16,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { GameTypeComponent } from './game-type/game-type.component';
 import { GameTypeService } from './game-type/game-type.service';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { GameTypeService } from './game-type/game-type.service';
     NotificationsComponent,
     UpgradeComponent,
     GameTypeComponent,
+    GameComponent,
   ],
   providers: [
     GameTypeService

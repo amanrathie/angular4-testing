@@ -1,8 +1,9 @@
 import {  RouteInfo } from './sidebar.metadata';
 
-export const ROUTES: RouteInfo[] = [    
+export const ROUTES: RouteInfo[] = [
     { path: 'dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: 'game-type', title: 'Game Types',  icon: 'dashboard', class: '' },
+    { path: 'game', title: 'Games',  icon: 'library_books', class: '' },
+    { path: 'game-type', title: 'Game Types',  icon: 'content_paste', class: '' },
     /*{ path: 'user-profile', title: 'User Profile',  icon:'person', class: '' },
     { path: 'table-list', title: 'Table List',  icon:'content_paste', class: '' },
     { path: 'typography', title: 'Typography',  icon:'library_books', class: '' },
