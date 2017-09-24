@@ -12,26 +12,43 @@ const connection = (closure) => {
     });
 };
 
-// Response handling
-let response = {
-    status: 200,
-    data: [],
-    message: null
-};
+// Generic error handler used by all endpoints.
+function handleError(res, reason, message, code) {
+  console.log("ERROR: " + reason);
+  res.status(code || 500).json({"error": message});
+}
 
+
+// game API
+
+router.post("/game", (req, res) => {
+  var newGame = req.body;
+
+  connection((db) => {
+    db.collection('game')
+      .insertOne(newGame, (err, doc) => {
+        if (err) {
+          handleError(res, err.message, "Failed to create new game.");
+        } else {
+          res.status(201).json(doc.ops[0]);
+        }
+      });
+  })
+});
+
+// gameType API
 router.get("/gametype", (req, res) => {
   connection((db) => {
-        db.collection('gametype')
-            .find()
-            .toArray()
-            .then((gametypes) => {
-                response.data = gametypes;
-                res.json(response);
-            })
-            .catch((err) => {
-                sendError(err, res);
-            });
+    db.collection('gametype')
+      .find()
+      .toArray()
+      .then((gametypes) => {
+          res.json(gametypes);
+      })
+      .catch((err) => {
+          sendError(err, res);
     });
+  });
 });
 
 router.delete("/gametype/:id", (req, res) => {
@@ -39,8 +56,7 @@ router.delete("/gametype/:id", (req, res) => {
     db.collection('gametype')
       .deleteOne({_id:new ObjectID(req.params.id)})
       .then((result) => {
-        response.data = req.params.id;
-        res.status(200).json(response);
+        res.status(200).json(req.params.id);
       })
       .catch((err) => {
           sendError(err, res);

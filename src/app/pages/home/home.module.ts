@@ -17,15 +17,18 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
 import { GameTypeComponent } from './game-type/game-type.component';
 import { GameTypeService } from './game-type/game-type.service';
 import { GameComponent } from './game/game.component';
+import { GameService } from './game/game.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-
     ComponentsModule,
     HomeRoutingModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     HomeComponent,
@@ -41,7 +44,8 @@ import { GameComponent } from './game/game.component';
     GameComponent,
   ],
   providers: [
-    GameTypeService
+    GameTypeService,
+    GameService
   ]
 })
 export class HomeModule { }

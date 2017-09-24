@@ -8,29 +8,31 @@
                     <p class="category">Add a game you played</p>
                 </div>
                 <div class="card-content">
-                    <form>
+                    <form #f="ngForm" (ngSubmit)="addGame()">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Location</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="location" [(ngModel)]="game.location" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Amount Spended</label>
-                                    <input type="text" class="form-control" >
+                                    <input type="text" class="form-control" name="amountSpended" [(ngModel)]="game.amountSpended">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Amount earned</label>
-                                    <input type="text" class="form-control" >
+                                    <input type="text" class="form-control" name="amountEarned" [(ngModel)]="game.amountEarned">
                                 </div>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-danger pull-right">Add Game</button>
+                        <!-- TODO: game date -->
+
+                        <button type="submit" class="btn btn-danger pull-right" [disabled]="f.invalid">Add Game</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>
