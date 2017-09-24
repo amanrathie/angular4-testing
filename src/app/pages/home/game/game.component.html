@@ -13,19 +13,19 @@
                             <div class="col-md-5">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Location</label>
-                                    <input type="text" class="form-control" name="location" [(ngModel)]="game.location" required>
+                                    <input type="text" class="form-control" name="location" [(ngModel)]="game.location" required maxlength="20">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Amount Spended</label>
-                                    <input type="text" class="form-control" name="amountSpended" [(ngModel)]="game.amountSpended">
+                                    <input type="text" class="form-control" name="amountSpended" [(ngModel)]="game.amountSpended" maxlength="10" pattern="[0-9]*">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Amount earned</label>
-                                    <input type="text" class="form-control" name="amountEarned" [(ngModel)]="game.amountEarned">
+                                    <input type="text" class="form-control" name="amountEarned" [(ngModel)]="game.amountEarned" maxlength="10" pattern="[0-9]*">
                                 </div>
                             </div>
                         </div>
@@ -50,18 +50,19 @@
                     <table class="table">
                         <thead class="text-danger">
                             <tr>
-                                <th>Id</th>
                                 <th>Location</th>
+                                <th>Amount Spended</th>
+                                <th>Amount Earned</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let game of games">
-                                <td>{{game._id}}</td>
                                 <td>{{game.location}}</td>
+                                <td>{{game.amountSpended}}</td>
+                                <td>{{game.amountEarned}}</td>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

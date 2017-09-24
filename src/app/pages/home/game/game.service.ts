@@ -4,17 +4,20 @@ import {Http, Response} from '@angular/http';
 
 @Injectable()
 export class GameService {
+
+  private gameUrl = "/api/game";
+
   constructor(private http : Http) {  }
 
   getGames() : Promise<void | Game[]> {
-    return this.http.get('/api/game')
+    return this.http.get(this.gameUrl)
                     .toPromise()
                     .then(resp => resp.json() as Game[])
                     .catch(this.handleError);
   }
 
   addGame(newGame : Game) : Promise<void | Game> {
-    return this.http.post('/api/game', newGame)
+    return this.http.post(this.gameUrl, newGame)
                     .toPromise()
                     .then(resp => resp.json() as Game)
                     .catch(this.handleError);

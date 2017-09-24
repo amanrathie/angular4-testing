@@ -14,12 +14,13 @@ import { IconsComponent } from './icons/icons.component';
 import { MapsComponent } from './maps/maps.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { GameTypeComponent } from './game-type/game-type.component';
 import { GameTypeService } from './game-type/game-type.service';
 import { GameComponent } from './game/game.component';
 import { GameService } from './game/game.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { DashboardService} from './dashboard/dashboard.service';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     GameTypeService,
-    GameService
+    GameService,
+    DashboardService
   ]
 })
 export class HomeModule { }

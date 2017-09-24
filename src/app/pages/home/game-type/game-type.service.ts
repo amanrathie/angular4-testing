@@ -11,26 +11,19 @@ export class GameTypeService {
 
   constructor(private http : Http) { }
 
-    // one way to get using promise
-    getGameTypes(): Promise<void | GameType[]> {
-      return this.http.get(this.gameTypeUrl)
-                 .toPromise()
-                 .then(response => response.json() as GameType[])
-                 .catch(this.handleError);
+  getGameTypes(): Promise<void | GameType[]> {
+    return this.http.get(this.gameTypeUrl)
+               .toPromise()
+               .then(response => response.json() as GameType[])
+               .catch(this.handleError);
+  }
 
-     // another way to get using angular observable
-     /*return this.http.get(this.gameTypeUrl)
-                 .map(response => response.json().data);*/
-
-    }
-
-    removeGameType(gameType : GameType) {
-      return this.http.delete(this.gameTypeUrl + '/' + gameType._id)
-                .toPromise()
-                .then(res => res.json() as String)
-                .catch(this.handleError);
-    }
-
+  removeGameType(gameType : GameType) {
+    return this.http.delete(this.gameTypeUrl + '/' + gameType._id)
+              .toPromise()
+              .then(res => res.json() as String)
+              .catch(this.handleError);
+  }
 
   private handleError (error: any) {
     let errMsg = (error.message) ? error.message :
