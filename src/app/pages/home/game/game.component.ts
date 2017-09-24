@@ -11,16 +11,20 @@ import { GameService } from './game.service';
 export class GameComponent implements OnInit {
 
   game : Game = new Game();
+  games : Game[];
 
   constructor(private gameService : GameService) {
   }
 
   ngOnInit() {
+    this.gameService
+        .getGames()
+        .then((resp : Game[])  => this.games = resp);
   }
 
   addGame() : void {
     console.log('Form submitted value: ', this.game);
-    this.gameService.addGame(this.game);  
+    this.gameService.addGame(this.game);
   }
 
 }

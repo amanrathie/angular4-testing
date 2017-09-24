@@ -6,11 +6,18 @@ import {Http, Response} from '@angular/http';
 export class GameService {
   constructor(private http : Http) {  }
 
+  getGames() : Promise<void | Game[]> {
+    return this.http.get('/api/game')
+                    .toPromise()
+                    .then(resp => resp.json() as Game[])
+                    .catch(this.handleError);
+  }
+
   addGame(newGame : Game) : Promise<void | Game> {
     return this.http.post('/api/game', newGame)
-                .toPromise()
-                .then(resp => resp.json() as Game)
-                .catch(this.handleError);
+                    .toPromise()
+                    .then(resp => resp.json() as Game)
+                    .catch(this.handleError);
   }
 
   private handleError (error: any) {

@@ -21,19 +21,33 @@ function handleError(res, reason, message, code) {
 
 // game API
 
+router.get("/game", (req, res) => {
+  connection((db) => {
+    db.collection('game')
+      .find()
+      .toArray()
+      .then((games) => {
+        res.json(games);
+      })
+      .catch((err) => {
+        handleError(res, err.message, "Failed to get games");
+      });
+  });
+})
+
 router.post("/game", (req, res) => {
   var newGame = req.body;
 
   connection((db) => {
     db.collection('game')
-      .insertOne(newGame, (err, doc) => {
-        if (err) {
-          handleError(res, err.message, "Failed to create new game.");
-        } else {
-          res.status(201).json(doc.ops[0]);
-        }
+      .insertOne(newGame)
+      .then((doc) => {
+        res.status(201).json(doc.ops[0]);
+      })
+      .catch((err) => {
+        handleError(res, err.message, "Failed to create new game");
       });
-  })
+  });
 });
 
 // gameType API
@@ -43,11 +57,11 @@ router.get("/gametype", (req, res) => {
       .find()
       .toArray()
       .then((gametypes) => {
-          res.json(gametypes);
+        res.json(gametypes);
       })
       .catch((err) => {
-          sendError(err, res);
-    });
+        handleError(res, err.message, "Failed to get gametypes");
+      });
   });
 });
 
@@ -59,7 +73,7 @@ router.delete("/gametype/:id", (req, res) => {
         res.status(200).json(req.params.id);
       })
       .catch((err) => {
-          sendError(err, res);
+        handleError(res, err.message, "Failed to delete gametype");
       });
   });
 });
