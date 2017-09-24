@@ -15,7 +15,7 @@ export class GameTypeService {
     getGameTypes(): Promise<void | GameType[]> {
       return this.http.get(this.gameTypeUrl)
                  .toPromise()
-                 .then(response => response.json().data as GameType[])
+                 .then(response => response.json() as GameType[])
                  .catch(this.handleError);
 
      // another way to get using angular observable
@@ -27,7 +27,7 @@ export class GameTypeService {
     removeGameType(gameType : GameType) {
       return this.http.delete(this.gameTypeUrl + '/' + gameType._id)
                 .toPromise()
-                .then(res => res.json().data as String)
+                .then(res => res.json() as String)
                 .catch(this.handleError);
     }
 
