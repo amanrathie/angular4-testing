@@ -4,10 +4,10 @@ const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 
 // API
-router.get("/game", getGame);
-router.post("/game", addGame);
-router.get("/gametype", getGameType);
-router.delete("/gametype/:id", deleteGameType);
+router.get("/games", getGame);
+router.post("/games", addGame);
+router.get("/gametypes", getGameType);
+router.delete("/gametypes/:id", deleteGameType);
 
 // Connect
 const connection = (closure) => {
@@ -26,7 +26,7 @@ function handleError(res, reason, message, code) {
 
 function getGame(req, res) {
   connection((db) => {
-    db.collection('game')
+    db.collection('games')
       .find()
       .sort({date:-1})
       .toArray()
@@ -43,7 +43,7 @@ function addGame(req, res) {
   var newGame = req.body;
 
   connection((db) => {
-    db.collection('game')
+    db.collection('games')
       .insertOne(newGame)
       .then((doc) => {
         res.status(201).json(doc.ops[0]);
@@ -56,7 +56,7 @@ function addGame(req, res) {
 
 function getGameType(req, res) {
   connection((db) => {
-    db.collection('gametype')
+    db.collection('gametypes')
       .find()
       .toArray()
       .then((gametypes) => {
@@ -70,7 +70,7 @@ function getGameType(req, res) {
 
 function deleteGameType(req, res) {
   connection((db) => {
-    db.collection('gametype')
+    db.collection('gametypes')
       .deleteOne({_id:new ObjectID(req.params.id)})
       .then((result) => {
         res.status(200).json(req.params.id);

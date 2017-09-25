@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GameTypeService {
 
-  private gameTypeUrl = "/api/gametype";
+  private gameTypeUrl = "/api/gametypes";
 
   constructor(private http : Http) { }
 

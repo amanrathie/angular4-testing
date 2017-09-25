@@ -5,7 +5,7 @@ import {Http, Response} from '@angular/http';
 @Injectable()
 export class GameService {
 
-  private gameUrl = "/api/game";
+  private gameUrl = "/api/games";
 
   constructor(private http : Http) {  }
 

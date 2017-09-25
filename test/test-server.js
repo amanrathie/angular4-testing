@@ -6,9 +6,9 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 describe('Games', function() {
-  it('should list ALL games on /game GET', (done) => {
+  it('should list ALL games on /games GET', (done) => {
     chai.request(server)
-        .get('/api/game')
+        .get('/api/games')
         .end((err, res) => {
           res.should.have.status(200);
           res.should.be.json;
@@ -16,9 +16,9 @@ describe('Games', function() {
         });
   });
 
-  it('should add a SINGLE game on /game POST', function(done) {
+  it('should add a SINGLE game on /games POST', function(done) {
     chai.request(server)
-        .post('/api/game')
+        .post('/api/games')
         .send({'location':'Brasilia', 'amountSpended':'1000', 'amountEarned':'2000'})
         .end((err, res) => {
           res.should.have.status(201);
