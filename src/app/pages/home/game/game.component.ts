@@ -10,6 +10,7 @@ import { GameService } from './game.service';
 })
 export class GameComponent implements OnInit {
 
+  public loading : boolean = false;
   game : Game = new Game();
   games : Game[];
 
@@ -17,15 +18,19 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.gameService
         .getGames()
-        .then((res : Game[])  => this.games = res);
+        .then((res : Game[])  => {this.games = res; this.loading = false})
+        .catch(() => this.loading = false)
   }
 
   addGame() : void {
+    this.loading = true;
     this.gameService
         .addGame(this.game)
-        .then((res:Game) => this.games.push(res));
+        .then((res:Game) => {this.games.push(res); this.loading = false})
+        .catch(() => this.loading = false);
   }
 
 }

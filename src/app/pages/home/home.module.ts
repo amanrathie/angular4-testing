@@ -22,6 +22,8 @@ import { GameComponent } from './game/game.component';
 import { GameService } from './game/game.service';
 import { DashboardService} from './dashboard/dashboard.service';
 
+import { LoadingModule } from 'ngx-loading';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { DashboardService} from './dashboard/dashboard.service';
     HomeRoutingModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoadingModule
   ],
   declarations: [
     HomeComponent,

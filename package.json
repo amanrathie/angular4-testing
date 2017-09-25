@@ -38,9 +38,10 @@
     "express": "^4.15.4",
     "googleapis": "19.0.0",
     "livereload": "^0.6.2",
+    "mongodb": "^2.2.31",
+    "ngx-loading": "^1.0.7",
     "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14",
-    "mongodb": "^2.2.31"
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^4.2.4",
