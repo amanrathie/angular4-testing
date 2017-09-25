@@ -3,6 +3,12 @@ const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;
 
+// API
+router.get("/game", getGame);
+router.post("/game", addGame);
+router.get("/gametype", getGameType);
+router.delete("/gametype/:id", deleteGameType);
+
 // Connect
 const connection = (closure) => {
     return MongoClient.connect(process.env.MONGODB_URI, (err, db) => {
@@ -18,13 +24,11 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
-
-// game API
-
-router.get("/game", (req, res) => {
+function getGame(req, res) {
   connection((db) => {
     db.collection('game')
       .find()
+      .sort({date:-1})
       .toArray()
       .then((games) => {
         res.json(games);
@@ -33,9 +37,9 @@ router.get("/game", (req, res) => {
         handleError(res, err.message, "Failed to get games");
       });
   });
-})
+}
 
-router.post("/game", (req, res) => {
+function addGame(req, res) {
   var newGame = req.body;
 
   connection((db) => {
@@ -48,10 +52,9 @@ router.post("/game", (req, res) => {
         handleError(res, err.message, "Failed to create new game");
       });
   });
-});
+}
 
-// gameType API
-router.get("/gametype", (req, res) => {
+function getGameType(req, res) {
   connection((db) => {
     db.collection('gametype')
       .find()
@@ -63,9 +66,9 @@ router.get("/gametype", (req, res) => {
         handleError(res, err.message, "Failed to get gametypes");
       });
   });
-});
+}
 
-router.delete("/gametype/:id", (req, res) => {
+function deleteGameType(req, res) {
   connection((db) => {
     db.collection('gametype')
       .deleteOne({_id:new ObjectID(req.params.id)})
@@ -76,6 +79,6 @@ router.delete("/gametype/:id", (req, res) => {
         handleError(res, err.message, "Failed to delete gametype");
       });
   });
-});
+}
 
 module.exports = router;
