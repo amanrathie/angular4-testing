@@ -10,7 +10,13 @@
                 <div class="card-content">
                     <form #f="ngForm" (ngSubmit)="addGame()">
                         <div class="row">
-                            <div class="col-md-5">
+                          <div class="col-md-3">
+                              <div class="form-group form-black label-floating is-empty">
+                                  <label class="control-label">Date</label>
+                                  <input type="date" class="form-control" name="date" [(ngModel)]="game.date">
+                              </div>
+                          </div>
+                            <div class="col-md-3">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Location</label>
                                     <input type="text" class="form-control" name="location" [(ngModel)]="game.location" required maxlength="20">
@@ -22,7 +28,7 @@
                                     <input type="text" class="form-control" name="amountSpended" [(ngModel)]="game.amountSpended" maxlength="10" pattern="[0-9]*">
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group form-black label-floating is-empty">
                                     <label class="control-label">Amount earned</label>
                                     <input type="text" class="form-control" name="amountEarned" [(ngModel)]="game.amountEarned" maxlength="10" pattern="[0-9]*">
@@ -44,20 +50,20 @@
             <div class="card">
                 <div class="card-header" data-background-color="red">
                     <h4 class="title">Game list</h4>
-                    <p class="category">All games played</p>
+                    <p class="category">All games played <small>({{games.length}})</small></p>
                 </div>
                 <div class="card-content table-responsive">
                     <table class="table">
                         <thead class="text-danger">
                             <tr>
-                                <th>Location</th>
+                                <th>Date</th>
                                 <th>Amount Spended</th>
                                 <th>Amount Earned</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let game of games">
-                                <td>{{game.location}}</td>
+                                <td>{{game.date | date: 'longDate'}}</td>
                                 <td>{{game.amountSpended}}</td>
                                 <td>{{game.amountEarned}}</td>
                             </tr>

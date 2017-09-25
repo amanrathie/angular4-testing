@@ -19,12 +19,13 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     this.gameService
         .getGames()
-        .then((resp : Game[])  => this.games = resp);
+        .then((res : Game[])  => this.games = res);
   }
 
   addGame() : void {
-    console.log('Form submitted value: ', this.game);
-    this.gameService.addGame(this.game);
+    this.gameService
+        .addGame(this.game)
+        .then((res:Game) => this.games.push(res));
   }
 
 }
