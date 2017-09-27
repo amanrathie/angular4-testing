@@ -60,6 +60,7 @@
                                 <th>Date</th>
                                 <th>Amount Spended</th>
                                 <th>Amount Earned</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,6 +68,12 @@
                                 <td>{{game.date | date: 'longDate'}}</td>
                                 <td>{{game.amountSpended}}</td>
                                 <td>{{game.amountEarned}}</td>
+                                <td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"
+                                      (click)="removeGame(game)">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

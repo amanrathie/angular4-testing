@@ -6,6 +6,7 @@ const ObjectID = require('mongodb').ObjectID;
 // API
 router.get("/games", getGame);
 router.post("/games", addGame);
+router.delete("/games/:id", deleteGame)
 router.get("/gametypes", getGameType);
 router.delete("/gametypes/:id", deleteGameType);
 
@@ -52,6 +53,19 @@ function addGame(req, res) {
         handleError(res, err.message, "Failed to create new game");
       });
   });
+}
+
+function deleteGame(req, res) {
+  connection((db) => {
+    db.collection('games')
+    .deleteOne({_id:new ObjectID(req.params.id)})
+    .then((result) => {
+      res.status(200).json(req.params.id);
+    })
+    .catch((err) => {
+      handleError(res, err.message, "Failed to delete game");
+    });
+  })
 }
 
 function getGameType(req, res) {

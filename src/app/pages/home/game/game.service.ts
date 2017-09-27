@@ -12,14 +12,21 @@ export class GameService {
   getGames() : Promise<void | Game[]> {
     return this.http.get(this.gameUrl)
                     .toPromise()
-                    .then(resp => resp.json() as Game[])
+                    .then(res => res.json() as Game[])
                     .catch(this.handleError);
   }
 
   addGame(newGame : Game) : Promise<void | Game> {
     return this.http.post(this.gameUrl, newGame)
                     .toPromise()
-                    .then(resp => resp.json() as Game)
+                    .then(res => res.json() as Game)
+                    .catch(this.handleError);
+  }
+
+  removeGame(game : Game) : Promise<void> {
+    return this.http.delete(this.gameUrl + '/' + game._id)
+                    .toPromise()
+                    .then(res => res.json() as string)
                     .catch(this.handleError);
   }
 

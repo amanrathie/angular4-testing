@@ -12,7 +12,7 @@ export class GameComponent implements OnInit {
 
   public loading : boolean = false;
   game : Game = new Game();
-  games : Game[];
+  games : Game[] = new Array<Game>();
 
   constructor(private gameService : GameService) {
   }
@@ -30,6 +30,14 @@ export class GameComponent implements OnInit {
     this.gameService
         .addGame(this.game)
         .then((res:Game) => {this.games.push(res); this.loading = false})
+        .catch(() => this.loading = false);
+  }
+
+  removeGame(game : Game) {
+    this.loading = true;
+    this.gameService
+        .removeGame(game)
+        .then((res) => {this.games.splice(this.games.indexOf(game), 1); this.loading = false})
         .catch(() => this.loading = false);
   }
 
