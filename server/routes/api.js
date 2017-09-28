@@ -6,6 +6,7 @@ const ObjectID = require('mongodb').ObjectID;
 // API
 router.get("/games", getGame);
 router.post("/games", addGame);
+router.put("/games/:id", editGame);
 router.delete("/games/:id", deleteGame)
 router.get("/gametypes", getGameType);
 router.delete("/gametypes/:id", deleteGameType);
@@ -52,6 +53,23 @@ function addGame(req, res) {
       .catch((err) => {
         handleError(res, err.message, "Failed to create new game");
       });
+  });
+}
+
+function editGame(req, res) {
+  var updateGame = req.body;
+  delete updateGame._id;
+
+  connection((db) => {
+    db.collection('games')
+    .updateOne({_id:new ObjectID(req.params.id)}, updateGame)
+    .then((result) => {
+      updateGame._id = req.params.id;
+      res.status(200).json(updateGame);
+    })
+    .catch((err) => {
+      handleError(res, err.message, "Failed to update game");
+    });
   });
 }
 

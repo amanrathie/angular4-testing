@@ -9,37 +9,36 @@
                     <p class="category">Add a game you played</p>
                 </div>
                 <div class="card-content">
-                    <form #f="ngForm" (ngSubmit)="addGame()">
+                    <form #f="ngForm" (ngSubmit)="saveGame()">
                         <div class="row">
                           <div class="col-md-3">
-                              <div class="form-group form-black label-floating is-empty">
+                              <div class="form-group form-black is-empty">
                                   <label class="control-label">Date</label>
                                   <input type="date" class="form-control" name="date" [(ngModel)]="game.date">
                               </div>
                           </div>
                             <div class="col-md-3">
-                                <div class="form-group form-black label-floating is-empty">
+                                <div class="form-group form-black is-empty">
                                     <label class="control-label">Location</label>
                                     <input type="text" class="form-control" name="location" [(ngModel)]="game.location" required maxlength="20">
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group form-black label-floating is-empty">
+                                <div class="form-group form-black is-empty">
                                     <label class="control-label">Amount Spended</label>
                                     <input type="text" class="form-control" name="amountSpended" [(ngModel)]="game.amountSpended" maxlength="10" pattern="[0-9]*">
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group form-black label-floating is-empty">
+                                <div class="form-group form-black is-empty">
                                     <label class="control-label">Amount earned</label>
                                     <input type="text" class="form-control" name="amountEarned" [(ngModel)]="game.amountEarned" maxlength="10" pattern="[0-9]*">
                                 </div>
                             </div>
                         </div>
 
-                        <!-- TODO: game date -->
-
-                        <button type="submit" class="btn btn-danger pull-right" [disabled]="f.invalid">Add Game</button>
+                        <button type="submit" class="btn btn-success pull-right" [disabled]="f.invalid">Save Game</button>
+                        <button type="button" class="btn btn-warning pull-right" (click)="clearForm()">Clear</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>
@@ -69,6 +68,10 @@
                                 <td>{{game.amountSpended}}</td>
                                 <td>{{game.amountEarned}}</td>
                                 <td class="td-actions text-right">
+                                  <button type="button" rel="tooltip" title="Edit" class="btn btn-primary btn-simple btn-xs"
+                                      (click)="setGame(game)">
+                                      <i class="material-icons">edit</i>
+                                  </button>
                                     <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs"
                                       (click)="removeGame(game)">
                                         <i class="material-icons">close</i>

@@ -25,12 +25,34 @@ export class GameComponent implements OnInit {
         .catch(() => this.loading = false)
   }
 
-  addGame() : void {
+  saveGame() : void {
     this.loading = true;
-    this.gameService
-        .addGame(this.game)
-        .then((res:Game) => {this.games.push(res); this.loading = false})
-        .catch(() => this.loading = false);
+
+    var gameId = this.game._id;
+
+    if (gameId) { // edit mode
+      this.gameService
+          .editGame(this.game)
+          .then((res:Game) => {
+            this.clearForm();
+            this.loading = false;
+          }) // TODO: update the edited game in list
+          .catch(() => this.loading = false);
+
+    } else { // new game
+      this.gameService
+          .addGame(this.game)
+          .then((res:Game) => {
+            this.games.push(res);
+            this.clearForm();
+            this.loading = false;
+          })
+          .catch(() => this.loading = false);
+    }
+  }
+
+  setGame(game : Game) {
+    this.game = Object.assign({}, game);
   }
 
   removeGame(game : Game) {
@@ -41,4 +63,7 @@ export class GameComponent implements OnInit {
         .catch(() => this.loading = false);
   }
 
+  clearForm() {
+    this.game = new Game();
+  }
 }

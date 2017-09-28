@@ -23,7 +23,14 @@ export class GameService {
                     .catch(this.handleError);
   }
 
-  removeGame(game : Game) : Promise<void> {
+  editGame(updateGame : Game) : Promise<void | Game> {
+    return this.http.put(this.gameUrl + '/' + updateGame._id, updateGame)
+                    .toPromise()
+                    .then(res => res.json() as Game)
+                    .catch(this.handleError);
+  }
+
+  removeGame(game : Game) : Promise<string> {
     return this.http.delete(this.gameUrl + '/' + game._id)
                     .toPromise()
                     .then(res => res.json() as string)

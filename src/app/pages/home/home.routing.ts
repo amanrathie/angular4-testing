@@ -28,7 +28,7 @@ const routes: Routes =[
       { path: 'notifications',  component: NotificationsComponent },
       { path: 'upgrade',        component: UpgradeComponent },
       { path: 'game-type',     component: GameTypeComponent },
-      { path: 'game', component: GameComponent }
+      { path: 'games', component: GameComponent }
     ]
   }
 ];

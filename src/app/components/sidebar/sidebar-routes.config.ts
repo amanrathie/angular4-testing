@@ -2,7 +2,7 @@ import {  RouteInfo } from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
     { path: 'dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-    { path: 'game', title: 'Games',  icon: 'library_books', class: '' }
+    { path: 'games', title: 'Games',  icon: 'library_books', class: '' }
     /*{ path: 'game-type', title: 'Game Types',  icon: 'content_paste', class: '' },
     { path: 'user-profile', title: 'User Profile',  icon:'person', class: '' },
     { path: 'table-list', title: 'Table List',  icon:'content_paste', class: '' },
