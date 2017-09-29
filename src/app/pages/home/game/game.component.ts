@@ -35,8 +35,9 @@ export class GameComponent implements OnInit {
           .editGame(this.game)
           .then((res:Game) => {
             this.clearForm();
+            this.updateGameValueInList(res);
             this.loading = false;
-          }) // TODO: update the edited game in list
+          })
           .catch(() => this.loading = false);
 
     } else { // new game
@@ -61,6 +62,10 @@ export class GameComponent implements OnInit {
         .removeGame(game)
         .then((res) => {this.games.splice(this.games.indexOf(game), 1); this.loading = false})
         .catch(() => this.loading = false);
+  }
+
+  updateGameValueInList(game : Game) {
+      this.games[this.games.findIndex(x => x._id == game._id)] = game;
   }
 
   clearForm() {
