@@ -17,6 +17,8 @@ export class GameComponent implements OnInit {
   constructor(private gameService : GameService) {
   }
 
+  // TODO: Order the list automatically by date while adding new games (not needing to refresh page)
+
   ngOnInit() {
     this.loading = true;
     this.gameService

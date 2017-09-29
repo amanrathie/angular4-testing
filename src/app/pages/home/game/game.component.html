@@ -56,17 +56,17 @@
                     <table class="table">
                         <thead class="text-danger">
                             <tr>
-                                <th>Date</th>
-                                <th>Amount Spended</th>
-                                <th>Amount Earned</th>
+                                <th>Game</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let game of games">
-                                <td>{{game.date | date: 'longDate'}}</td>
-                                <td>{{game.amountSpended}}</td>
-                                <td>{{game.amountEarned}}</td>
+                                <td>
+                                    <div>{{game.date | date: 'longDate'}}</div>
+                                    <div><small>{{game.location}}</small></div>
+                                    <div>{{game.amountSpended}}/{{game.amountEarned}}</div>
+                                </td>
                                 <td class="td-actions text-right">
                                   <button type="button" rel="tooltip" title="Edit" class="btn btn-primary btn-simple btn-xs"
                                       (click)="setGame(game)">
