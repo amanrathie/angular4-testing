@@ -13,6 +13,13 @@ This is a configuration found in this post: https://stackoverflow.com/questions/
 
 ## Integration testing
 
-The application uses Mocha/Chai to test the REST API. To run the tests:
+The project uses Mocha/Chai to test the REST API. To run the tests:
 * First install Mocha: `npm install -g mocha`
 * Then run the tests just running the command `mocha` in the terminal
+
+## Code Analysis
+
+The project uses SonarQube for code analysis. To run the code analysis, you should:
+* Install Sonar Scanner locally as described in this link: https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner
+* Run `sonar-scanner` in the root folder of the project
+* Access https://sonarcloud.io/dashboard?id=poker-bankroll to check the analysis result
