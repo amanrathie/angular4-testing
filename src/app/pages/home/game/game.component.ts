@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder} from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 import { Game } from './game.model';
 import { GameService } from './game.service';
+
 
 @Component({
   selector: 'app-game',
@@ -14,7 +16,7 @@ export class GameComponent implements OnInit {
   game : Game = new Game();
   games : Game[] = new Array<Game>();
 
-  constructor(private gameService : GameService) {
+  constructor(private gameService : GameService, @Inject(DOCUMENT) private document: Document) {
   }
 
   // TODO: Order the list automatically by date while adding new games (not needing to refresh page)
@@ -54,8 +56,9 @@ export class GameComponent implements OnInit {
     }
   }
 
-  setGame(game : Game) {
+  prepareToEditGame(game : Game) {
     this.game = Object.assign({}, game);
+    this.document.body.scrollTop = 0;
   }
 
   removeGame(game : Game) {

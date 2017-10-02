@@ -7,9 +7,7 @@ const ObjectID = require('mongodb').ObjectID;
 router.get("/games", getGame);
 router.post("/games", addGame);
 router.put("/games/:id", editGame);
-router.delete("/games/:id", deleteGame)
-router.get("/gametypes", getGameType);
-router.delete("/gametypes/:id", deleteGameType);
+router.delete("/games/:id", deleteGame);
 
 // Connect
 const connection = (closure) => {
@@ -84,33 +82,6 @@ function deleteGame(req, res) {
       handleError(res, err.message, "Failed to delete game");
     });
   })
-}
-
-function getGameType(req, res) {
-  connection((db) => {
-    db.collection('gametypes')
-      .find()
-      .toArray()
-      .then((gametypes) => {
-        res.json(gametypes);
-      })
-      .catch((err) => {
-        handleError(res, err.message, "Failed to get gametypes");
-      });
-  });
-}
-
-function deleteGameType(req, res) {
-  connection((db) => {
-    db.collection('gametypes')
-      .deleteOne({_id:new ObjectID(req.params.id)})
-      .then((result) => {
-        res.status(200).json(req.params.id);
-      })
-      .catch((err) => {
-        handleError(res, err.message, "Failed to delete gametype");
-      });
-  });
 }
 
 module.exports = router;
